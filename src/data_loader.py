@@ -28,7 +28,7 @@ class EmotionDataset(Dataset):
         feature_tensor = torch.tensor(self.features[idx], dtype=torch.float32)
     
         # Reshape to (1, height, width) for CNN input
-        feature_tensor = feature_tensor.unsqueeze(0)  # Adds a channel dimension
+        feature_tensor = feature_tensor.view(1, 1, -1)  # Ensure correct shape
     
         label_tensor = torch.tensor(self.labels[idx], dtype=torch.long)
         return feature_tensor, label_tensor
