@@ -1,59 +1,21 @@
-# Audio Emotion Detection
+# 🎵 Audio Emotion Detection  
 
-Project Overview: 
-This project implements an audio emotion detection model using deep learning techniques.
-Setup Instructions
-Prerequisites
+## 📌 Project Overview  
+This project implements an **Audio Emotion Detection** model using **deep learning** techniques. It extracts features from audio files and classifies emotions such as **Neutral, Happy, Sad, Angry, Fear, Disgust, and Surprise** using a trained neural network.  
 
-Python 3.8+
-CUDA (optional, for GPU acceleration)
+---
 
-Installation
+## ⚙️ Setup Instructions  
 
-Clone the repository
-Create a virtual environment
+### **Prerequisites**  
+- **Python 3.8+**  
+- **CUDA (optional, for GPU acceleration)**  
 
-bashCopypython -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+---
 
-Install dependencies
+### **Installation**  
 
-bashCopypip install -r requirements.txt
-Dataset
-
-Place audio files in the dataset folder
-Supported formats: WAV, MP3
-
-Training
-
-bashCopypython main.py train
-
-Inference
-
-bashCopypython main.py predict --audio_path path/to/audio.wav
-
-Project Structure
-Copyaudio-emotion-detection/
-│
-├── dataset/
-│   └── (audio files)
-│
-├── models/
-│   └── emotion_model.pth
-│
-├── src/
-│   ├── data_loader.py
-│   ├── extract_feature.py
-│   ├── augmentation.py
-│   ├── train.py
-│   └── test.py
-│
-├── main.py
-├── requirements.txt
-└── README.md
-Model Performance
-
-Accuracy: 91%
-Emotions Detected: Neutral, Happy, Sad, Angry, Fear, Disgust, Surprise
-
-Copy
+1️⃣ **Clone the repository:**  
+```sh
+git clone https://github.com/your-username/Audio_Emotion_Detection.git  
+cd Audio_Emotion_Detection
