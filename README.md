@@ -1,5 +1,6 @@
-#Audio Emotion Detection
-Project Overview
+# Audio Emotion Detection
+
+Project Overview: 
 This project implements an audio emotion detection model using deep learning techniques.
 Setup Instructions
 Prerequisites
@@ -24,9 +25,13 @@ Place audio files in the dataset folder
 Supported formats: WAV, MP3
 
 Training
+
 bashCopypython main.py train
+
 Inference
+
 bashCopypython main.py predict --audio_path path/to/audio.wav
+
 Project Structure
 Copyaudio-emotion-detection/
 │
