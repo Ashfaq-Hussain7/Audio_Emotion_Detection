@@ -1,16 +1,33 @@
 # main.py
 
+import argparse
+import sys
 import os
 
-if __name__ == "__main__":
-    # Ensure dataset and output directories exist
-    os.makedirs("dataset", exist_ok=True)
-    os.makedirs("models", exist_ok=True)
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
-    print("Step 1: Extracting features from dataset...")
-    os.system("python src/extract_features.py")
+from src.train import train_model
+from src.test import predict_emotion
+from src.config import Config
 
-    print("Step 2: Training the model...")
-    os.system("python src/train.py")
+def main():
+    parser = argparse.ArgumentParser(description='Audio Emotion Detection')
+    parser.add_argument('mode', choices=['train', 'predict'], 
+                        help='Mode of operation')
+    parser.add_argument('--audio_path', type=str, 
+                        help='Path to audio file for prediction')
+    
+    args = parser.parse_args()
+    
+    if args.mode == 'train':
+        train_model(Config.DATASET_DIR)
+    
+    elif args.mode == 'predict':
+        if not args.audio_path:
+            print("Please provide an audio path for prediction")
+            sys.exit(1)
+        
+        predict_emotion(args.audio_path)
 
-    print("Speech Emotion Recognition pipeline completed!")
+if __name__ == '__main__':
+    main()
