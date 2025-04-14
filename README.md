@@ -1,54 +1,132 @@
-#Audio Emotion Detection
-Project Overview
-This project implements an audio emotion detection model using deep learning techniques.
-Setup Instructions
-Prerequisites
+# 🎙️ Audio Emotion Detection
 
-Python 3.8+
-CUDA (optional, for GPU acceleration)
+A deep learning-powered system to detect human emotions from speech audio clips. This project achieves **~95% accuracy** and successfully identifies emotions like *happy*, *sad*, *angry*, *fear*, and more using MFCC features and an optimized CNN model.
 
-Installation
+---
 
-Clone the repository
-Create a virtual environment
+## 🚀 Highlights
 
-bashCopypython -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+- 🎧 Audio input: `.wav` files
+- 🧠 Model: 1D Convolutional Neural Network with BatchNorm and Dropout
+- 🎚️ Feature extraction: MFCC (mean + std)
+- 🔁 Augmentation: Noise, pitch shift, time stretch, EQ, masking
+- ✅ Validation Accuracy: **~95%**
+- 🔍 Example Test: Correctly predicted **"fear"** with **97% confidence**
 
-Install dependencies
+---
 
-bashCopypip install -r requirements.txt
-Dataset
+## 📁 Project Structure
 
-Place audio files in the dataset folder
-Supported formats: WAV, MP3
-
-Training
-bashCopypython main.py train
-Inference
-bashCopypython main.py predict --audio_path path/to/audio.wav
-Project Structure
-Copyaudio-emotion-detection/
+```
+Audio_Emotion_Detection/
 │
-├── dataset/
-│   └── (audio files)
-│
-├── models/
-│   └── emotion_model.pth
-│
-├── src/
-│   ├── data_loader.py
-│   ├── extract_feature.py
-│   ├── augmentation.py
-│   ├── train.py
-│   └── test.py
-│
-├── main.py
-├── requirements.txt
+├── models/                 # Saved model, class mapping, accuracy plots
+├── dataset/                # Input audio files
+├── src/                    # Source code
+│   ├── train.py            # Model training
+│   ├── test.py             # Emotion prediction
+│   ├── extract_features.py # MFCC extraction
+│   ├── data_loader.py      # Dataset loader
+│   └── augmentation.py     # Data augmentation methods
+├── features.csv            # Extracted MFCC features
+├── requirements.txt        # Project dependencies
 └── README.md
-Model Performance
+```
 
-Accuracy: 91%
-Emotions Detected: Neutral, Happy, Sad, Angry, Fear, Disgust, Surprise
+---
 
-Copy
+## 🛠️ Getting Started
+
+### 1. Clone the Repository
+```bash
+git clone https://github.com/Ashfaq-Hussain7/Audio_Emotion_Detection.git
+cd Audio_Emotion_Detection
+```
+
+### 2. Set Up a Virtual Environment
+```bash
+python -m venv venv
+venv\Scripts\activate  # On Windows
+# or
+source venv/bin/activate  # On macOS/Linux
+```
+
+### 3. Install Requirements
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## 🎓 Training
+
+### Step 1: Extract Features
+```bash
+python src/extract_features.py
+```
+
+### Step 2: Train the Model
+```bash
+python src/train.py
+```
+
+Training includes:
+- 5-fold Stratified Cross-Validation
+- Early stopping & class-weighted loss
+- Augmentation-enabled feature extraction
+
+---
+
+## 🧪 Testing
+
+### Step 1: Run Inference
+```bash
+python src/test.py
+```
+
+Set your audio path in `test.py`:
+```python
+predict_emotion("audio_samples/fear_test.wav")
+```
+
+### ✅ Sample Output:
+```
+Predicted Emotion: fear
+Confidence: 97.02%
+```
+
+---
+
+## 📊 Performance
+
+- ✅ **Validation Accuracy**: ~95% (5-fold CV)
+- 🧪 Tested on real unseen audio: 97% confidence on "fear"
+- 📈 Training and validation curves saved in `models/training_curves.png`
+
+---
+
+## 📦 Future Work
+
+- Integrate mel-spectrogram and spectrogram feature options
+- Add a CNN-LSTM variant for sequential modeling
+- Deploy real-time detection via Streamlit or Flask
+- Support for more nuanced emotions (boredom, sarcasm, etc.)
+
+---
+
+## 📂 Dataset Sources
+
+You can use any `.wav` file, but for best results, consider:
+- [RAVDESS](https://zenodo.org/record/1188976)
+- [TESS](https://tspace.library.utoronto.ca/handle/1807/24487)
+- [CREMA-D](https://github.com/CheyneyComputerScience/CREMA-D)
+
+---
+
+## 🙌 Author
+
+**Ashfaq Hussain**  
+[GitHub: @Ashfaq-Hussain7](https://github.com/Ashfaq-Hussain7)
+
+---
+
