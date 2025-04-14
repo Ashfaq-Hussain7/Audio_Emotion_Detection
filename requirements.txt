@@ -1,0 +1,14 @@
+Deep Learning and ML
+torch==2.1.0
+torchvision==0.16.0
+numpy==1.24.3
+scikit-learn==1.2.2
+pandas==2.0.1
+Audio Processing
+librosa==0.10.1
+soundfile==0.12.1
+Additional Utilities
+matplotlib==3.7.1
+scipy==1.10.1
+Optional: If using GPU
+nvidia-cuda-runtime-cu11  # Adjust version as needed
